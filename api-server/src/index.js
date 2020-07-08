@@ -8,12 +8,12 @@ const sequelize = new Sequelize('ticket', 'root', '', {
     host: 'localhost',
     dialect: 'mysql'
   });
-/* try {
-     sequelize.authenticate();
+ try {
+    await sequelize.authenticate();
     console.log('Connection has been established successfully.');
   } catch (error) {
     console.error('Unable to connect to the database:', error);
-  } */
+  } 
 
 
 app.listen( 8080,()=> console.log('server is online'));
