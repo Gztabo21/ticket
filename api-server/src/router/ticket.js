@@ -1,6 +1,4 @@
 const express = require('express');
-let path = require('path');
-let fs = require('fs');
 const routes = express.Router();
 const {Ticket} = require('../config/db');
 
@@ -28,7 +26,7 @@ routes.post('/tickets',async(req,res,next)=>{
     try{
     let body = req.body;
     let ticket = body ;
-    await Ticket.create({  name: ticket.name })  
+    await Ticket.create({  name: ticket.name , UserIdUser: ticket.UserIdUser })  
     res.status(200).json('OKAY')
     }catch(err){
         next(err);
