@@ -1,0 +1,9 @@
+- Debes crear una app en React + nodejs+ MySql(u otra) en la cual se pueda registrar y loguear usuario (sin recuperación de contraseña) y en la que existan dos perfiles de usuario: Administrador y Usuario.
+- El perfil administrador solo tiene una tabla para gestionar tickets (Crud) en donde se los puede asignar a usuarios.
+- El perfil de usuario solo posee una lista de tickets asignados a el y un boton para pedirlos (setear el ticket_pedido).
+- El login de usuarios debe discriminar y redireccionar según su perfil.
+- Debes subir el proyecto a git y enviarnos las instrucciones para levantar el proyecto (incluye el script de SQL en el proyecto).
+- El proyecto cuenta con 3 Tablas:
+1. usuarios: id, id_tipouser, nombre, mail, pass
+2. ticket: id , id_user , ticket_pedido
+3. tipo_usuario: id, nombre
