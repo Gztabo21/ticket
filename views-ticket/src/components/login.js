@@ -36,8 +36,8 @@ class Login extends Component{
           if(data){
               this.setState({error:data})
           }else{
-            let auth = localStorage.setItem('auth', resp.data)
-            this.props.history.push(ROUTES.LANDING);
+            let auth = localStorage.setItem('auth', resp.data.token)
+            this.props.history.push(ROUTES.MAIN);
             
           }
           this.setState({ ...INITIAL_STATE });

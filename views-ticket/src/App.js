@@ -6,9 +6,9 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
+  Link,Redirect,
   useRouteMatch,
-  useParams
+  useParams,
 } from "react-router-dom";
 import './App.css';
 import InitialComponent from './components/dashboard';
@@ -20,9 +20,10 @@ function App() {
   return (
     <>
       <Switch>
-        <Route  path={ROUTER.LANDING} component={InitialComponent} />
-        <Route exact={true} path={ROUTER.SIGNIN} component={LoginComponent} />
-        <Route path={ROUTER.REGISTER}  component={RegisterComponent} />
+        <Route exact path={ROUTER.LANDING} component={LoginComponent} />
+        <Route  path={ROUTER.MAIN} component={InitialComponent} />
+        <Route  path={ROUTER.SIGNIN} component={LoginComponent} />
+        <Route  path={ROUTER.REGISTER}  component={RegisterComponent} />
       </Switch>
     </>
   );
