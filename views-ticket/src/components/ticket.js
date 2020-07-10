@@ -3,6 +3,9 @@ import TicketService from '../core/services/ticket-services';
 import { Button, Table } from 'react-bootstrap';
 import TicketForm from'./ticket-form';
 import ConfirmDelete from './confirm-delete';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 import './ticket.css';
 
@@ -19,10 +22,18 @@ export default function Ticket(props){
     
 return(
     <>
-    <h1>tickect</h1>
-    <TicketForm name="NEW"/>
-    <br />
-    <Table striped bordered hover variant="dark">
+    <Container>
+        <Row>
+            <Col md={{ offset:4, span:3 }}><h1>Tickets</h1></Col>
+        </Row>
+        <Row>
+            <Col className='header-btns'><TicketForm name="NEW"/></Col>
+        </Row>
+    </Container>
+    <Container>
+        
+        <Row>
+            <Col><Table striped bordered hover variant="dark">
             <thead>
                 <tr>
                 <th>#</th>
@@ -34,11 +45,11 @@ return(
             <tbody>
                 {
                     ticket?
-                    ticket.map(t=>
+                    ticket.map((t,i)=>
                         <tr key={t.idTicket}>
-                        <td>{t.idTicket}</td>
+                        <td>{i+1}</td>
                         <td>{t.name}</td>
-                        <td>{t.ticketPedido}</td>
+                        <td>{t.UserIdUser? <label>Assigned</label>: 'request without'}</td>
                         <td><ConfirmDelete id={t.idTicket} /> <TicketForm name="EDIT"  id={t.idTicket}/>  </td>
                         </tr>
                         )
@@ -46,7 +57,11 @@ return(
                     }
                
             </tbody>
-    </Table>
+    </Table></Col>
+        </Row>
+    </Container>
+ 
+    
     </>
 )
 }

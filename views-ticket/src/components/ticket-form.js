@@ -27,23 +27,17 @@ export default function TicketForm(props) {
                UserService.getAll().then(res=>{ setUser(res.data); });
                 getTicket(id)
            }  
-           
-            
     },[show])
    
 
     const getTicket = (id)=>{
-
         if(id){
             TicketService.get(props.id).then(res =>{
              res.data.forEach(r => {
                  setName(r.name)
                  setAssigned(r.UserIdUser)
-
              });
-       
             })
-         
         } 
     }
 

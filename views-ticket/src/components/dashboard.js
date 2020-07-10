@@ -3,7 +3,10 @@ import './dashboard.css';
 import Ticket from'./ticket';
 import NavbarTicket from './navbar';
 import {Redirect,withRouter} from "react-router-dom";
-
+import * as ROUTES from'../router';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 export  class DashboardComponent extends Component {
 
@@ -13,13 +16,16 @@ constructor(props) {
 }
 
 componentDidMount(){
-    console.log(this.props)
     const auth = localStorage.getItem('auth');
-    if(!auth){
-        console.log('desactivo')
+    console.log(auth)
+    if(auth === null){
+        this.props.history.push(ROUTES.SIGNIN)
     }
-}
 
+}
+componentWillMount(){
+    
+}
 render(){
     return(
         <>
@@ -30,5 +36,5 @@ render(){
 }
 
 }
-const ComponentInitial = withRouter(DashboardComponent)
-export  default ComponentInitial;
+const InitialComponent = withRouter(DashboardComponent)
+export  default InitialComponent;

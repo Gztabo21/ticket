@@ -11,14 +11,18 @@ import {
   useParams
 } from "react-router-dom";
 import './App.css';
-import ComponentInitial from './components/dashboard';
+import InitialComponent from './components/dashboard';
+import LoginComponent from './components/login';
+import RegisterComponent from'./components/register';
 
 function App() {
 
   return (
     <>
       <Switch>
-        <Route  path={ROUTER.LANDING} component={ComponentInitial} />
+        <Route  path={ROUTER.LANDING} component={InitialComponent} />
+        <Route exact={true} path={ROUTER.SIGNIN} component={LoginComponent} />
+        <Route path={ROUTER.REGISTER}  component={RegisterComponent} />
       </Switch>
     </>
   );
