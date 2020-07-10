@@ -6,7 +6,7 @@ import { Button,
      ModalTitle,
      ModalBody,
      ModalFooter  } from 'react-bootstrap';
-import {Form , FormControl,FormCheck} from 'react-bootstrap';
+import {Form , FormControl} from 'react-bootstrap';
 import UserService  from '../core/services/user-services';
 import TicketService from '../core/services/ticket-services';
 

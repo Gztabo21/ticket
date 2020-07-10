@@ -12,17 +12,41 @@ export  class DashboardComponent extends Component {
 
 constructor(props) {
      super(props);
-    this.state = {Saludo:'Hola!!'}
+    this.state = {token:''}
 }
 
 componentDidMount(){
-    const auth = localStorage.getItem('auth');
-    console.log(auth)
-    if(auth === null){
-        this.props.history.push(ROUTES.SIGNIN)
-    }
+    this.verifyAuth();
 
 }
+verifyAuth(){
+    const auth = localStorage.getItem('auth');
+    if(auth === null){
+        this.props.history.push(ROUTES.SIGNIN)
+    }else{
+        this.setState({token: this.parseJwt(auth)}) 
+        this.tokenExpiresIn(this.state.token);
+    }
+    
+}
+tokenExpiresIn(data){
+    let hoy = new Date();
+    let expire =  new Date();
+    expire.setTime(data.exp*1000)
+            if (hoy.getTime() >= expire.getTime()){
+                alert('session a expirado')
+                this.props.history.push(ROUTES.SIGNIN)
+                //this.router.navigate(['../login']);
+            }
+  }
+  
+parseJwt (tkn) {
+    var base64Url = tkn.split('.')[1];
+    var base64 = base64Url.replace('-', '+').replace('_', '/');
+    console.log(JSON.parse(window.atob(base64)));
+    return JSON.parse(window.atob(base64));
+};
+
 componentWillMount(){
     
 }
