@@ -75,7 +75,7 @@ class Login extends Component{
                        
                     <Row>
                         <Col md={{span:6 ,offset: 3}}> <label className="msg">{error? error :null}</label></Col>
-                        <Col md={{span:6 ,offset: 3}}> <Button variant="primary" type="submit" size="lg" block >
+                        <Col md={{span:6 ,offset: 3}}> <Button variant="primary" type="submit" size="lg" block disabled={isInvalid} >
                             Sign in
                         </Button></Col>
                     <Col md={{span:5 ,offset: 3}}><Link to={ROUTES.REGISTER}> <label className="register">You do not have an account? Check in</label> </ Link>
