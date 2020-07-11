@@ -3,7 +3,7 @@ const express = require('express');
 const auth = require('./auth');
 const tickets = require('./ticket');
 const users = require('./user');
-const usertypes = require('./usertype')
+const usertypes = require('./userType')
 
 const routes  = express.Router();
 
