@@ -3,6 +3,7 @@ const express = require('express');
 const auth = require('./auth');
 const tickets = require('./ticket');
 const users = require('./user');
+const usertypes = require('./usertype')
 
 const routes  = express.Router();
 
@@ -19,6 +20,6 @@ routes.use((req, res, next) => {
 routes.use(process.env.api, auth);
 routes.use(process.env.api, tickets);
 routes.use(process.env.api, users);
-
+routes.use(process.env.api, usertypes);
 
 module.exports = routes;

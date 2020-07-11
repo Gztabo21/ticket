@@ -2,32 +2,32 @@ import React, { Component } from 'react';
 import './dashboard.css';
 import Ticket from'./ticket';
 import NavbarTicket from './navbar';
+import TicketAssigned from './ticketAssigned'
 import {Redirect,withRouter} from "react-router-dom";
 import * as ROUTES from'../router';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import UserTypeService from '../core/services/userType-services';
+
+
 
 export  class DashboardComponent extends Component {
 
 constructor(props) {
      super(props);
-    this.state = {token:''}
+    this.state = {token:[],role:'',idUser:''}
+    
 }
 
 componentDidMount(){
     this.verifyAuth();
-
 }
+
 verifyAuth(){
     const auth = localStorage.getItem('auth');
-    if(auth === null){
-        this.props.history.push(ROUTES.SIGNIN)
-    }else{
-        this.setState({token: this.parseJwt(auth)}) 
-        this.tokenExpiresIn(this.state.token);
-    }
-    
+    auth === null ?this.props.history.push(ROUTES.SIGNIN):   this.tokenExpiresIn(this.parseJwt(auth))
+
 }
 tokenExpiresIn(data){
     let hoy = new Date();
@@ -36,25 +36,35 @@ tokenExpiresIn(data){
             if (hoy.getTime() >= expire.getTime()){
                 alert('session a expirado')
                 this.props.history.push(ROUTES.SIGNIN)
-                //this.router.navigate(['../login']);
             }
+
   }
+VerifyRole(idUserType,idUser){
+    this.setState((state)=>{return {idUser: state.idUser = idUser}})
+    UserTypeService.get(idUserType).then(res =>{
+        this.setState((state)=>{
+            return{role: state.role = res.data[0].name }})
+    }) 
+}
   
 parseJwt (tkn) {
-    var base64Url = tkn.split('.')[1];
-    var base64 = base64Url.replace('-', '+').replace('_', '/');
-    console.log(JSON.parse(window.atob(base64)));
-    return JSON.parse(window.atob(base64));
+    let base64Url = tkn.split('.')[1];
+    let base64 = base64Url.replace('-', '+').replace('_', '/');
+   
+    let payload= []
+    payload.push(JSON.parse(window.atob(base64))) 
+    this.VerifyRole(payload[0].role,payload[0].id);
+    //this.tokenExpiresIn(payload[0]);
+
+    return payload[0]
 };
 
-componentWillMount(){
-    
-}
+
 render(){
     return(
         <>
         <NavbarTicket />
-        <Ticket />
+        {this.state.role ==='administrador'? <Ticket  />:<TicketAssigned idUser={this.state.idUser} />}
         </>
     );
 }

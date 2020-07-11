@@ -4,18 +4,13 @@ import './index.css';
 import App from './App';
 import {
   BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useRouteMatch,
-  useParams
 } from "react-router-dom";
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
      <Router>
-     <App />
+          <App />
       </Router>
     
   </React.StrictMode>,
