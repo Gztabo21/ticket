@@ -1,48 +1,36 @@
 const express = require('express');
-const app = express();
-let path = require('path');
 const { User } = require('../config/db');
 const routes = express.Router();
 const crypto = require('crypto')
 const jwt = require('jsonwebtoken') ;
 
-/* "Content-Type: application/json" -X POST "localhost:8080/api/v1/signin" -d {\"email\":\"client@admin.com\",\"password\":\"123456\"}*/
 routes.post('/signin', async (req,res,next)=>{
     try{
         let body = req.body;
         let user = body;
         let pw   = criptPassword(user.password)
         let role 
+        let id
         let userDB = await User.findAll({ where: {
             email: user.email, password:pw
           }});
         userDB.forEach(u => {
             role = u.UserTypeIdUserType
-            console.log(role)
+            id = u.idUser
         });
         let token   = jwt.sign(
             {   user:user.email, 
                 role: role,
+                id:id,
                 "creador":"GustavoCacharuco",
             },//payload
             'https://github.com/Gztabo21/ticket.git',     //secret
             {expiresIn:60*60})
-            console.log(token);
           if (userDB.length === 0) {
             return res.status(200).json({ message: 'Incorrect email & Incorrect password.' })
           }else{
             res.status(200).json({'token':token})
           }
-          
-
-        /* userDB.forEach( u => {
-
-            if(user.email === u.email && user.password === u.password){
-         
-                    
-                
-            }
-        }); */
         
     }
     catch(err){
@@ -71,7 +59,6 @@ routes.post('/register',async (req,res,next)=>{
 function criptPassword(password){
     const hash = crypto.createHash('sha256');
     let nwPw = hash.update(password).digest('hex')
-    //console.log(nwPw)
      return nwPw
 }
 

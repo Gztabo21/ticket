@@ -22,6 +22,16 @@ routes.get('/tickets/:id',async(req,res,next)=>{
             next(err);
         } 
         })
+ routes.get('/tickets/assigned/:idUser',async(req,res,next)=>{
+            try{
+            let idUser = req.params.idUser;
+            let tickets = await Ticket.findAll({where:{UserIdUser:idUser}});
+            res.status(200).json(tickets)
+            }catch(err){
+                next(err);
+            } 
+            })
+
 routes.post('/tickets',async(req,res,next)=>{
     try{
     let body = req.body;

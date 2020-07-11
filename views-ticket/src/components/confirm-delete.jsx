@@ -6,16 +6,12 @@ import { Button,
      ModalTitle,
      ModalBody,
      ModalFooter  } from 'react-bootstrap';
-import {Form , FormControl,FormCheck} from 'react-bootstrap';
-import UserService  from '../core/services/user-services';
 import TicketService from '../core/services/ticket-services';
 
 
 
 export default function ConfirmDelete(props) {
     const [show, setShow] = useState(false);
-    const [user,setUser]= useState([]);
-    const [assigned, setAssigned] = useState()
     const [id,setId] = useState(props.id);
 
 
@@ -23,7 +19,7 @@ export default function ConfirmDelete(props) {
     const handleShow = () => setShow(true); 
 
     const deleteTicket = ()=>{
-           TicketService.delete(props.id).then(res =>{
+           TicketService.delete(id).then(res =>{
               console.log(res.data)
             })   
             setShow(false)

@@ -9,6 +9,7 @@ import { Button,
 import {Form , FormControl} from 'react-bootstrap';
 import UserService  from '../core/services/user-services';
 import TicketService from '../core/services/ticket-services';
+import Notification from'./notificacion';
 
 
 
@@ -16,8 +17,10 @@ export default function TicketForm(props) {
     const [show, setShow] = useState(false);
     const [user,setUser]= useState([]);
     const [assigned, setAssigned] = useState()
+    const [request,setRequest]= useState(null)
     const [name,setName] = useState()
     const [id,setId] = useState(props.id);
+    const [isShowMe,setIsShowMe] = useState(false)
 
 
     const handleClose = () => {setShow(false); setId()}
@@ -50,14 +53,32 @@ export default function TicketForm(props) {
             
             TicketService.add(ticket).then( res =>{
                 console.log(res.data);
+                setIsShowMe(true)
             })
+            setIsShowMe(false);
+            setAssigned( )
+            setName()
         }else{
+          if(props.idUser!== null){
+           // ticket.UserIdUser = props.idUser;
+            ticket.ticketPedido = request;
             TicketService.update(id,ticket).then(res =>{
-                console.log(res.data);
-            })
+              console.log(res.data);
+              setIsShowMe(true)
+          })
+          setIsShowMe(false);
+          }else{
+            TicketService.update(id,ticket).then(res =>{
+              console.log(res.data);
+              setIsShowMe(true)
+          })
+          setIsShowMe(false);
+          }
+            
         }
         
-        setShow(false)
+        setShow(false) ;
+        
     }
     return (
       <>
@@ -71,18 +92,34 @@ export default function TicketForm(props) {
           </Modal.Header>
           <Modal.Body>
           <Form>
-            <Form.Group controlId="formBasicEmail">
+            {
+              props.name === 'EDIT' || props.name === 'NEW'?
+              <>
+              <Form.Group controlId="formBasicEmail">
                 <Form.Label>Ticket Name </Form.Label>
                 <Form.Control type="text" value={name} onChange={e =>setName(e.target.value)} placeholder="Enter email" />
             </Form.Group>
             <Form.Group controlId="formBasicEmail">
                 <Form.Label>To assing: </Form.Label>
                 <Form.Control as="select" value={assigned} onChange={e => setAssigned(e.target.value)} >
+                <option>No assigned</option>
                     {user?user.map(u =><option value={u.idUser} key={u.idUser} >{u.name}</option>): <option>No DATA</option>}
                 </Form.Control>
                 <Form.Text className="text-muted">
                 </Form.Text>
             </Form.Group>
+            </>
+              :
+            <Form.Group controlId="formBasicEmail">
+              <Form.Label>Ticket Name </Form.Label>
+              <Form.Control as="select" value={request} onChange={e => setRequest(e.target.value)} >
+                  <option value={null}  >request without</option>
+                  <option value={props.idUser}  >Request Ticket</option>
+                  
+              </Form.Control>
+            </Form.Group>
+            }
+            
             
             </Form>
           </Modal.Body>
@@ -95,6 +132,7 @@ export default function TicketForm(props) {
             </Button>
           </Modal.Footer>
         </Modal>
+        {isShowMe?<Notification msg="SUCESS"/>:null}
       </>
     );
   }

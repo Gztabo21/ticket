@@ -6,7 +6,7 @@ import {Link} from "react-router-dom";
 import * as ROUTES from '../router';
 
 export default function NavbarTicket(props){
-    console.log(props);
+   
     const signOut = ()=> localStorage.removeItem('auth'); 
   return ( 
       <>  <Navbar bg="dark" variant="dark">
