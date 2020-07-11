@@ -16,7 +16,6 @@ export default function TicketAssigned(props){
         let data =[]
         res.data.forEach( r =>{
             if (r.UserIdUser === 2 || r.UserIdUser === null ){
-                //setTicket()
                 data.push(r)
             }
         })
