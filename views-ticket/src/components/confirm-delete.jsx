@@ -17,14 +17,6 @@ export default function ConfirmDelete(props) {
 
     const handleClose = () => {setShow(false); setId()}
     const handleShow = () => setShow(true); 
-
-    const deleteTicket = ()=>{
-           TicketService.delete(id).then(res =>{
-              console.log(res.data)
-            })   
-            setShow(false)
-    }
-
    
     return (
       <>
@@ -32,16 +24,17 @@ export default function ConfirmDelete(props) {
   
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title> Ticket </Modal.Title>
+            <Modal.Title><label className="header-modal">Ticket</label>  </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-          Are you sure you want to delete?
+          <label htmlFor="" className="text-modal" >Are you sure you want to delete?</label>
+          
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
-            <Button variant="danger" onClick={deleteTicket}>
+            <Button variant="danger" onClick={()=>{props.delete(id); setShow(false)}}>
               Delete
             </Button>
           </Modal.Footer>

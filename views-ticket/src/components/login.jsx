@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import './login.css';
+import logo from '../logo.svg';
 import {Redirect,withRouter,Link} from "react-router-dom";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -55,7 +56,7 @@ class Login extends Component{
                 <Row>
                     <Col md={{ span:2 ,offset: 4 }}>
                         <Image className="logo"
-                         src="https://www.designevo.com/res/templates/thumb_small/unique-orange-letter-m.png" roundedCircle />
+                         src={logo} roundedCircle />
                         </Col>
                 </Row>
                

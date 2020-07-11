@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState,useEffect,useRef} from 'react';
 import { Button,
      Modal,
      ModalDialog,
@@ -21,6 +21,7 @@ export default function TicketForm(props) {
     const [name,setName] = useState()
     const [id,setId] = useState(props.id);
     const [isShowMe,setIsShowMe] = useState(false)
+    const wrapper = useRef(null);
 
 
     const handleClose = () => {setShow(false); setId()}
@@ -29,6 +30,7 @@ export default function TicketForm(props) {
            if(show) {
                UserService.getAll().then(res=>{ setUser(res.data); });
                 getTicket(id)
+                console.log(props)
            }  
     },[show])
    
@@ -65,13 +67,16 @@ export default function TicketForm(props) {
             TicketService.update(id,ticket).then(res =>{
               console.log(res.data);
               setIsShowMe(true)
+             
           })
           setIsShowMe(false);
           }else{
             TicketService.update(id,ticket).then(res =>{
               console.log(res.data);
               setIsShowMe(true)
+              props.setIsShowMe(true)
           })
+          props.setIsShowMe(true)
           setIsShowMe(false);
           }
             
@@ -86,11 +91,11 @@ export default function TicketForm(props) {
           {props.name} Ticket
         </Button>
   
-        <Modal show={show} onHide={handleClose}>
+        <Modal ref={wrapper}  show={show} onHide={handleClose}>
           <Modal.Header closeButton>
             <Modal.Title> Ticket </Modal.Title>
           </Modal.Header>
-          <Modal.Body>
+          <Modal.Body ref={wrapper}>
           <Form>
             {
               props.name === 'EDIT' || props.name === 'NEW'?

@@ -4,6 +4,15 @@ background: -webkit-linear-gradient(to right, #004e92, #000428);  /* Chrome 10-2
 background: linear-gradient(to right, #004e92, #000428); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 color:#fff;
 }
+.text-modal{
+    color: black;
+}
+.header-modal{
+    color: black; 
+}
+.modal-body, .modal-header{
+    color: black;  
+}
 .logo{
     width: 200px;
 }
