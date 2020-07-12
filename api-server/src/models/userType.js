@@ -1,5 +1,5 @@
 module.exports = (sequelize, type) => {
-    return sequelize.define('UserType', {
+    return sequelize.define('UserTypes', {
         idUserType: {
           type: type.INTEGER,
           primaryKey: true,

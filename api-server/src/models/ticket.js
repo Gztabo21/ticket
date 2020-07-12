@@ -1,5 +1,5 @@
 module.exports = (sequelize, type) => {
-    let Ticket = sequelize.define('Ticket', {
+    let Ticket = sequelize.define('Tickets', {
         idTicket: {
           type: type.INTEGER,
           primaryKey: true,

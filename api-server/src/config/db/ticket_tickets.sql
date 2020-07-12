@@ -19,10 +19,10 @@
 -- Dumping data for table `tickets`
 --
 
-LOCK TABLES `tickets` WRITE;
-/*!40000 ALTER TABLE `tickets` DISABLE KEYS */;
-INSERT INTO `tickets` VALUES (2,'0000-00-00 00:00:00','2020-07-09 21:32:57',2,'limpiar',''),(3,'0000-00-00 00:00:00','2020-07-09 21:33:14',2,'correr',''),(6,'2020-07-09 18:41:30','2020-07-09 18:41:30',NULL,'lavar',NULL),(9,'2020-07-09 20:59:20','2020-07-09 20:59:20',2,'pagina web',NULL);
-/*!40000 ALTER TABLE `tickets` ENABLE KEYS */;
+LOCK TABLES `Ticket` WRITE;
+/*!40000 ALTER TABLE `Tickets` DISABLE KEYS */;
+INSERT INTO `Tickets` VALUES (2,'0000-00-00 00:00:00','2020-07-09 21:32:57',2,'limpiar',''),(3,'0000-00-00 00:00:00','2020-07-09 21:33:14',2,'correr',''),(6,'2020-07-09 18:41:30','2020-07-09 18:41:30',NULL,'lavar',NULL),(9,'2020-07-09 20:59:20','2020-07-09 20:59:20',2,'pagina web',NULL);
+/*!40000 ALTER TABLE `Tickets` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
