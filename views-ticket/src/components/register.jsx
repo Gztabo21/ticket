@@ -83,6 +83,18 @@ render() {
                 </Form.Group>
                 </Col>  
             </Row>
+            {/* <Row>
+                <Col>
+                <Form.Group controlId="formBasicEmail">
+                    <Form.Label>Type User </Form.Label>
+                    <Form.Control as="select" value={this.state.UserTypeIdUserType} onChange={this.handleChange} >
+                        <option value={1}  >Administrador</option>
+                        <option value={2}  >Normal</option>
+                        
+                    </Form.Control>
+                </Form.Group>
+                </Col>
+            </Row> */}
             <Row>
                 <Col md={6}>
                     <Form.Group >
