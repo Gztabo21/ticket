@@ -43,7 +43,6 @@ handleRedirect(event){
 handleSubmit(event) {
 
       AuthService.register(this.state).then(resp=>{
-          console.log(resp)
           if(resp.data === "OKAY"){
             this.props.history.push(ROUTES.SIGNIN)
           }

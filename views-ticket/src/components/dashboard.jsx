@@ -43,7 +43,9 @@ VerifyRole(idUserType,idUser){
     this.setState((state)=>{return {idUser: state.idUser = idUser}})
     UserTypeService.get(idUserType).then(res =>{
         console.log(res)
-        this.setState((state)=>{return{role: state.role = res.data[0].name }})
+        this.setState((state)=>{
+            return{role: state.role = res.data[0].name }
+        })
     }) 
 
     console.log(this.state)
