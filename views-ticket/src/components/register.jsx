@@ -19,7 +19,7 @@ const INITIAL_STATE = {
             password:'',
             passwordTwo:'',
             email:'',
-            UserTypeidUserType:2,
+            UserTypeIdUserType:2,
             message: null,
 };
 

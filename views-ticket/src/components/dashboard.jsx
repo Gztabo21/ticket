@@ -39,10 +39,11 @@ tokenExpiresIn(data){
 
   }
 VerifyRole(idUserType,idUser){
+    console.log(idUserType)
     this.setState((state)=>{return {idUser: state.idUser = idUser}})
     UserTypeService.get(idUserType).then(res =>{
-        this.setState((state)=>{
-            return{role: state.role = res.data[0].name }})
+        console.log(res)
+        this.setState((state)=>{return{role: state.role = res.data[0].name }})
     }) 
 
     console.log(this.state)
@@ -54,6 +55,7 @@ parseJwt (tkn) {
    
     let payload= []
     payload.push(JSON.parse(window.atob(base64))) 
+    console.log(payload[0])
     this.VerifyRole(payload[0].role,payload[0].id);
     return payload[0]
 };
