@@ -9,7 +9,7 @@ import {Form , FormControl,FormCheck} from 'react-bootstrap';
 import { Button,  } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';
 import AuthService from '../core/services/auth-services';
-
+import logo from '../logo.svg';
 
 
 import './register.css'
@@ -66,7 +66,7 @@ render() {
     <Container>
         <Row>
             <Col md={{ span:1 ,offset: 4.5 }}>
-                <Image src="https://www.designevo.com/res/templates/thumb_small/unique-orange-letter-m.png" roundedCircle />
+                <Image src={logo} roundedCircle />
                 </Col>
         </Row>
         
@@ -100,12 +100,12 @@ render() {
             </Row>
             <Row className="justify-content-md-center" >
                 <Col md={{offset:4}}>
-                <Button variant="primary" type="submit">
+                <Button block variant="primary" type="submit" disabled={isInvalid}>
                     Register
                 </Button>
                 </Col>
                 <Col >
-                <Button variant="outline-primary" type="button" onClick={this.handleRedirect}>
+                <Button block variant="outline-primary" type="button" onClick={this.handleRedirect}>
                     Sign in
                 </Button>
                 </Col>

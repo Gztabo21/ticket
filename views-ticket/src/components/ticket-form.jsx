@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState,useEffect,useRef} from 'react';
 import { Button,
      Modal,
      ModalDialog,
@@ -21,6 +21,7 @@ export default function TicketForm(props) {
     const [name,setName] = useState()
     const [id,setId] = useState(props.id);
     const [isShowMe,setIsShowMe] = useState(false)
+    const wrapper = useRef(null);
 
 
     const handleClose = () => {setShow(false); setId()}
@@ -43,7 +44,6 @@ export default function TicketForm(props) {
             })
         } 
     }
-
     const saveTicket = () =>{
         let ticket = new Object();
         ticket.name= name
@@ -52,8 +52,9 @@ export default function TicketForm(props) {
         if(id === undefined){
             
             TicketService.add(ticket).then( res =>{
-                console.log(res.data);
-                setIsShowMe(true)
+                props.setIsShowMe(true)
+               
+               console.log(props.setTicket([]))
             })
             setIsShowMe(false);
             setAssigned( )
@@ -63,18 +64,20 @@ export default function TicketForm(props) {
            // ticket.UserIdUser = props.idUser;
             ticket.ticketPedido = request;
             TicketService.update(id,ticket).then(res =>{
-              console.log(res.data);
-              setIsShowMe(true)
+              props.setTicket([])
+              props.setIsShowMe(true)
+             
           })
           setIsShowMe(false);
           }else{
             TicketService.update(id,ticket).then(res =>{
-              console.log(res.data);
-              setIsShowMe(true)
+              props.setIsShowMe(true)
+              props.setTicket([])
           })
+          props.setIsShowMe(false)
           setIsShowMe(false);
           }
-            
+ 
         }
         
         setShow(false) ;
@@ -86,11 +89,11 @@ export default function TicketForm(props) {
           {props.name} Ticket
         </Button>
   
-        <Modal show={show} onHide={handleClose}>
+        <Modal ref={wrapper}  show={show} onHide={handleClose}>
           <Modal.Header closeButton>
             <Modal.Title> Ticket </Modal.Title>
           </Modal.Header>
-          <Modal.Body>
+          <Modal.Body ref={wrapper}>
           <Form>
             {
               props.name === 'EDIT' || props.name === 'NEW'?
@@ -132,7 +135,7 @@ export default function TicketForm(props) {
             </Button>
           </Modal.Footer>
         </Modal>
-        {isShowMe?<Notification msg="SUCESS"/>:null}
+
       </>
     );
   }

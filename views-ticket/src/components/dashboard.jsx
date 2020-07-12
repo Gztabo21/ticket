@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './dashboard.css';
 import Ticket from'./ticket';
 import NavbarTicket from './navbar';
-import TicketAssigned from './ticketAssigned'
 import {Redirect,withRouter} from "react-router-dom";
 import * as ROUTES from'../router';
 import Container from 'react-bootstrap/Container';
@@ -45,6 +44,8 @@ VerifyRole(idUserType,idUser){
         this.setState((state)=>{
             return{role: state.role = res.data[0].name }})
     }) 
+
+    console.log(this.state)
 }
   
 parseJwt (tkn) {
@@ -54,8 +55,6 @@ parseJwt (tkn) {
     let payload= []
     payload.push(JSON.parse(window.atob(base64))) 
     this.VerifyRole(payload[0].role,payload[0].id);
-    //this.tokenExpiresIn(payload[0]);
-
     return payload[0]
 };
 
@@ -64,7 +63,7 @@ render(){
     return(
         <>
         <NavbarTicket />
-        {this.state.role ==='administrador'? <Ticket  />:<TicketAssigned idUser={this.state.idUser} />}
+        <Ticket role={this.state.role} idUser={this.state.idUser} />
         </>
     );
 }
