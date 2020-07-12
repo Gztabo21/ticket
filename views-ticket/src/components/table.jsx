@@ -7,7 +7,7 @@ import TicketService from '../core/services/ticket-services';
 import Notification from'./notificacion';
 
 export default function TableDataSource (props){
-    const [ticket,setTicket] = useState([])
+    const [ticket,setTicket] = useState(props.ticket)
     const [isShowMe,setIsShowMe] = useState(false);
 
     useEffect(()=>{
@@ -28,6 +28,13 @@ export default function TableDataSource (props){
               })
         }
     },[ticket.length])
+    useEffect(()=>{
+        setTimeout(()=>{
+            setIsShowMe(false);
+           }, 2000)
+        
+    },[isShowMe])
+
     const deleteTicket = (id)=>{
         TicketService.delete(id).then(res =>{
            console.log(res.data)
@@ -37,7 +44,7 @@ export default function TableDataSource (props){
 
 return(
     <>
-    {isShowMe?<Notification msg="SUCESS"/>:null}
+    {isShowMe?<Notification msg="successful operation"/>:null}
     <Table striped bordered hover variant="dark">
     <thead>
         <tr>
@@ -56,8 +63,8 @@ return(
                 <td>{t.name}</td>
                 <td>{t.UserIdUser? <label>Assigned</label>: 'request without'}</td>
                 {
-                    props.role === 'administrador'?<td><ConfirmDelete delete={deleteTicket} id={t.idTicket} /> <TicketForm name="EDIT" setIsShowMe={setIsShowMe} id={t.idTicket}/></td>:
-                                                  <td>{!t.UserIdUser? <TicketForm setIsShowMe={setIsShowMe} name="Request" idUser={props.idUser} id={t.idTicket}/>:'Assigned'}  </td>
+                    props.role === 'administrador'?<td><ConfirmDelete delete={deleteTicket} id={t.idTicket} /> <TicketForm name="EDIT" setTicket={setTicket}  setIsShowMe={setIsShowMe} id={t.idTicket}/></td>:
+                                                  <td>{!t.UserIdUser? <TicketForm setTicket={setTicket} setIsShowMe={setIsShowMe} name="Request" idUser={props.idUser} id={t.idTicket}/>:'Assigned'}  </td>
                 }
             </tr>
                 )

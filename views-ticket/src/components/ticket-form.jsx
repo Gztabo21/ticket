@@ -30,7 +30,6 @@ export default function TicketForm(props) {
            if(show) {
                UserService.getAll().then(res=>{ setUser(res.data); });
                 getTicket(id)
-                console.log(props)
            }  
     },[show])
    
@@ -45,7 +44,6 @@ export default function TicketForm(props) {
             })
         } 
     }
-
     const saveTicket = () =>{
         let ticket = new Object();
         ticket.name= name
@@ -54,8 +52,9 @@ export default function TicketForm(props) {
         if(id === undefined){
             
             TicketService.add(ticket).then( res =>{
-                console.log(res.data);
-                setIsShowMe(true)
+                props.setIsShowMe(true)
+               
+               console.log(props.setTicket([]))
             })
             setIsShowMe(false);
             setAssigned( )
@@ -65,21 +64,20 @@ export default function TicketForm(props) {
            // ticket.UserIdUser = props.idUser;
             ticket.ticketPedido = request;
             TicketService.update(id,ticket).then(res =>{
-              console.log(res.data);
-              setIsShowMe(true)
+              props.setTicket([])
+              props.setIsShowMe(true)
              
           })
           setIsShowMe(false);
           }else{
             TicketService.update(id,ticket).then(res =>{
-              console.log(res.data);
-              setIsShowMe(true)
               props.setIsShowMe(true)
+              props.setTicket([])
           })
-          props.setIsShowMe(true)
+          props.setIsShowMe(false)
           setIsShowMe(false);
           }
-            
+ 
         }
         
         setShow(false) ;
@@ -137,7 +135,7 @@ export default function TicketForm(props) {
             </Button>
           </Modal.Footer>
         </Modal>
-        {isShowMe?<Notification msg="SUCESS"/>:null}
+
       </>
     );
   }
