@@ -100,7 +100,7 @@ export default function TicketForm(props) {
               <>
               <Form.Group controlId="formBasicEmail">
                 <Form.Label>Ticket Name </Form.Label>
-                <Form.Control type="text" value={name} onChange={e =>setName(e.target.value)} placeholder="Enter email" />
+                <Form.Control type="text" value={name} onChange={e =>setName(e.target.value)} placeholder="Enter name ticket" />
             </Form.Group>
             <Form.Group controlId="formBasicEmail">
                 <Form.Label>To assing: </Form.Label>
