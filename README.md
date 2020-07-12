@@ -8,7 +8,26 @@ React Nodejs Mysql
 * [Clone Repositorio](https://github.com/Gztabo21/ticket.git)
 # Ejecutar Server
 
-* Exporte la DDBB en MYSQL. **ubicado en la carpeta** "api-server\src\config\db"
+* import la DDBB en MYSQL. **ubica la carpeta** "api-server\src\config\db", aqui encontraras los archivos sql que vas importar
+## COMO IMPORTA EL SQL ?
+### TERMINAL (Linux)     
+1. Nos logeamos en Mysql por la terminal
+     ```mysql -u root -p```
+2. Creamos un nuestra tabla donde nos vamos a importar
+     ```CREATE DATABASE new_database;```
+3. Verá esta salida confirmando de que se creó.
+      ```Query OK, 1 row affected (0.00 sec)```
+4. Luego salga presionando CTRL + D. Desde la línea de comando normal, puede importar el archivo de volcado con el siguiente comando:
+       ``` mysql -u username -p new_database < data-dump.sql  ```
+       
+  **username** = es el nombre de usuario con el que puede iniciar sesión en la base de datos.
+  **new_database** = es el nombre de la base de datos recién creada.
+  **data-dump.sql** = es el archivo de volcado de datos a importar, ubicado en el directorio actual.
+### phpmyAdmin
+1. Accede a tu base de datos mediante PHPMyAdmin , **Abre el navegador y escribe Localhost/phpmyadmin**
+    introduce el tu **Usuario** y la **Contraseña**. para acceder al panel de administracion.
+2. 
+### Worbeach
 * Ubiquese en la Carperta API-SERVER con la terminal. si usas VSCODE abre la carpeta con el editor(VSCODE), 
   y con la combinacion de tecla **CTRL + J** , Te Abrira la Terminal donde Ejecutaras los Siguiente Codigos:
 * Ejecute `npm install`, Para install las dependencias.
