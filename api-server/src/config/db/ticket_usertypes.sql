@@ -19,10 +19,10 @@
 -- Dumping data for table `usertypes`
 --
 
-LOCK TABLES `Usertypes` WRITE;
-/*!40000 ALTER TABLE `Usertypes` DISABLE KEYS */;
-INSERT INTO `Usertypes` VALUES (1,'administrador','0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,'usuario','0000-00-00 00:00:00','0000-00-00 00:00:00');
-/*!40000 ALTER TABLE `Usertypes` ENABLE KEYS */;
+LOCK TABLES `UserTypes` WRITE;
+/*!40000 ALTER TABLE `UserTypes` DISABLE KEYS */;
+INSERT INTO `UserTypes` VALUES (1,'administrador','0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,'usuario','0000-00-00 00:00:00','0000-00-00 00:00:00');
+/*!40000 ALTER TABLE `UserTypes` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
