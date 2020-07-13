@@ -10,7 +10,7 @@ export default function TableDataSource (props){
     const [ticket,setTicket] = useState([])
     const [isShowMe,setIsShowMe] = useState(false);
     useEffect(()=>{
-        console.log('marisco');
+       // console.log('test de refresch');
         setTicket([]);
     },[props.ticket])
 
