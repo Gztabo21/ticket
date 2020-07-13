@@ -9,16 +9,17 @@ import Notification from'./notificacion';
 export default function TableDataSource (props){
     const [ticket,setTicket] = useState([])
     const [isShowMe,setIsShowMe] = useState(false);
+    useEffect(()=>{
+        console.log('marisco');
+        setTicket([]);
+    },[props.ticket])
 
     useEffect(()=>{
-        console.log(props)
+        
         if(props.role !== 'administrador'){
-            console.log(props.role)
             TicketService.getAll().then(res =>{
-                console.log(res)
                 let data =[]
                 res.data.forEach( r =>{
-                    console.log(r)
                     if (r.UserIdUser === 2 || r.UserIdUser === null ){
                         data.push(r)
                     }
@@ -27,7 +28,6 @@ export default function TableDataSource (props){
               })
         } else{
             TicketService.getAll().then(res =>{
-                console.log(res)
                 setTicket(res.data)
               })
         }
@@ -41,7 +41,7 @@ export default function TableDataSource (props){
 
     const deleteTicket = (id)=>{
         TicketService.delete(id).then(res =>{
-           console.log(res.data)
+            setIsShowMe(true);
          })  
    setTicket([])
  }

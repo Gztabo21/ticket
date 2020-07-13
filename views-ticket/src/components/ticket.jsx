@@ -40,7 +40,7 @@ return(
         <Row ref={wrapper}  >
             <Col ref={wrapper} >
             {isShowMe?<Notification msg="successful operation"/>:null}
-            <TableDataSource  idUSer={props.idUser} role={props.role} />
+            <TableDataSource ticket={ticket} idUSer={props.idUser} role={props.role} />
     </Col>
         </Row>
     </Container>

@@ -50,11 +50,10 @@ export default function TicketForm(props) {
         ticket.UserIdUser = assigned
 
         if(id === undefined){
-            
+            //para ingresar nuevo registro
             TicketService.add(ticket).then( res =>{
                 props.setIsShowMe(true)
-               
-               console.log(props.setTicket([]))
+                  props.setTicket([])
             })
             setIsShowMe(false);
             setAssigned( )
@@ -63,6 +62,7 @@ export default function TicketForm(props) {
           if(props.idUser!== null){
            // ticket.UserIdUser = props.idUser;
             ticket.ticketPedido = request;
+            //updte
             TicketService.update(id,ticket).then(res =>{
               props.setTicket([])
               props.setIsShowMe(true)
