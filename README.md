@@ -26,8 +26,12 @@ React Nodejs Mysql
 ### phpmyAdmin
 1. Accede a tu base de datos mediante PHPMyAdmin , **Abre el navegador y escribe Localhost/phpmyadmin**
     introduce el tu **Usuario** y la **Contraseña**. para acceder al panel de administracion.
-2. 
-### Worbeach
+2. Crea la Base de datos.
+3. Seleccione la base de datos ya creada.
+4. Ve a la pestaña *Importar* archivos.
+5. Haz clic en *Examinar*, encuentra el archivo SQL en tu computadora, haz clic en Abrir, y luego haz clic en Ir.
+Esto ejecuta el archivo SQL y actualiza la base de datos según lo que se especifica en el archivo SQL. La restauración de la base de datos puede demorar varios minutos.
+
 * Ubiquese en la Carperta API-SERVER con la terminal. si usas VSCODE abre la carpeta con el editor(VSCODE), 
   y con la combinacion de tecla **CTRL + J** , Te Abrira la Terminal donde Ejecutaras los Siguiente Codigos:
 * Ejecute `npm install`, Para install las dependencias.
