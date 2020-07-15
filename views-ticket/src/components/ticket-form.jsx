@@ -10,6 +10,8 @@ import {Form , FormControl} from 'react-bootstrap';
 import UserService  from '../core/services/user-services';
 import TicketService from '../core/services/ticket-services';
 import Notification from'./notificacion';
+import { BsPencilSquare,BsPlus } from 'react-icons/bs';
+
 
 
 
@@ -86,7 +88,8 @@ export default function TicketForm(props) {
     return (
       <>
         <Button variant="primary" onClick={handleShow}>
-          {props.name} Ticket
+
+         {props.name === 'EDIT' ?<BsPencilSquare/> :<BsPlus /> } 
         </Button>
   
         <Modal ref={wrapper}  show={show} onHide={handleClose}>

@@ -7,7 +7,7 @@ import { Button,
      ModalBody,
      ModalFooter  } from 'react-bootstrap';
 import TicketService from '../core/services/ticket-services';
-
+import { BsTrashFill } from 'react-icons/bs';
 
 
 export default function ConfirmDelete(props) {
@@ -20,7 +20,7 @@ export default function ConfirmDelete(props) {
    
     return (
       <>
-       <Button variant="outline-danger" onClick={handleShow} >Delete</Button>
+       <Button variant="danger" onClick={handleShow} ><BsTrashFill /></Button>
   
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>

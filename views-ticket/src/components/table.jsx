@@ -67,7 +67,7 @@ return(
                 <td>{t.name}</td>
                 <td>{t.UserIdUser? <label>Assigned</label>: 'request without'}</td>
                 {
-                    props.role === 'administrador'?<td><ConfirmDelete delete={deleteTicket} id={t.idTicket} /> <TicketForm name="EDIT" setTicket={setTicket}  setIsShowMe={setIsShowMe} id={t.idTicket}/></td>:
+                    props.role === 'administrador'?<td> <TicketForm name="EDIT" setTicket={setTicket}  setIsShowMe={setIsShowMe} id={t.idTicket}/> <ConfirmDelete delete={deleteTicket} id={t.idTicket} /> </td>:
                                                   <td>{!t.UserIdUser? <TicketForm setTicket={setTicket} setIsShowMe={setIsShowMe} name="Request" idUser={props.idUser} id={t.idTicket}/>:'Assigned'}  </td>
                 }
             </tr>
