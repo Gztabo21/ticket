@@ -24,7 +24,7 @@
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.1.0",
-    "sequelize": "^6.3.0",
+    "sequelize": "^6.28.2",
     "sequelize-cli": "^6.2.0"
   }
 }
